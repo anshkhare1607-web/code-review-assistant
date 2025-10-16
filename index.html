@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Review Assistant</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="text-gray-200 font-sans antialiased">
+
+    <div class="flex h-screen">
+
+        <aside class="w-1/4 max-w-xs flex-shrink-0 bg-black/30 backdrop-blur-sm border-r border-cyan-500/20 p-6 overflow-y-auto">
+            <h2 class="text-cyan-400 text-2xl font-bold mb-6 sci-fi-glow">Review History</h2>
+            <ul id="history-list" class="space-y-3">
+                <li>No history found.</li>
+            </ul>
+        </aside>
+
+        <main class="flex-1 flex flex-col p-8 md:p-12 overflow-y-auto">
+            
+            <header class="mb-8">
+                <h1 class="text-5xl font-bold text-gray-100 mb-2 sci-fi-glow">AI Code Review Assistant</h1>
+                <p class="text-lg text-gray-400">Upload source code for an instant, AI-powered analysis.</p>
+            </header>
+
+            <div class="max-w-xl mx-auto w-full">
+                <form id="upload-form" class="mb-8 flex flex-col">
+                    <div id="dropzone" class="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center cursor-pointer bg-black/20 hover:border-cyan-400 hover:bg-gray-800/50 transition-all">
+                        <input type="file" id="file-input" class="hidden">
+                        <p id="dropzone-text" class="text-gray-400">Drag & drop your file here, or click to select</p>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="mt-4 self-center bg-cyan-500 text-black font-bold py-2 px-8 rounded-lg hover:bg-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50 transition-all disabled:opacity-50 disabled:hover:shadow-none" disabled>
+                        Review Code
+                    </button>
+                </form>
+            </div>
+            
+            <div id="results-container" class="bg-black/30 backdrop-blur-sm rounded-lg shadow-inner flex-1 border border-purple-500/20 flex flex-col">
+                <h2 class="text-purple-400 text-2xl font-bold p-6 border-b border-gray-700 sci-fi-glow">Review Report</h2>
+                
+                <div id="loader-container" class="hidden">
+                    <span class="loader-dot"></span>
+                    <span class="loader-dot"></span>
+                    <span class="loader-dot"></span>
+                </div>
+
+                <div id="review-output" class="prose prose-invert max-w-none p-6 text-gray-300">
+                    <p>Your report will appear here...</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
